@@ -1,3 +1,6 @@
+# Red Hat Enterprise Linux Commands
+#### This GitHub repository contains a curated collection of useful Red Hat Enterprise Linux (RHEL) commands. Whether you're managing users, configuring services, troubleshooting, or automating tasks, you'll find helpful command-line examples and explanations here to make your RHEL experience smoother.
+<br><br>
 # Table of Contents
 - [Access Control List](#Access-Control-List)  
 - [User Account Management](#User-Account-Management)
@@ -10,6 +13,8 @@
 - [Word Count](#Word-Count)
 
 
+
+<br><br>
 # Access Control List:
 
 ### Add permission for a user
