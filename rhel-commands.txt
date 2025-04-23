@@ -1,0 +1,40 @@
+# Linux File Editors:
+- vi
+- ed
+- ex
+- emacs
+- pico
+- vim
+
+Confirm locations:
+- cat /etc/group #display all groups
+- cat /etc/passwd #confirm users   name:password:user-id:group-id::home-directory:shell
+- id <user-name
+- cat /etc/shadow  #display encrypted passwords
+
+vi VS. vim
+- vi is an older text editor.
+- if you know vi, then you know vim without enhance features.
+- Resources:
+    - https://www.openvim.con/
+    - http://www.vimgenius.con
+    - https://vim-adventures.com/
+
+Users Management:
+   - Active directory = Microsoft
+        - ldap is a protocol
+
+    - IDM - Identity Manager (built by redhat)
+    - WinBIND = Allows windows active directory to log into linux machines. used in Linux to communicate with windows (Samba)
+    - OpenLDAP (open source) - for Linux 
+    - IBM Directory Server
+    - JumpClous
+    - LDAP = Lightweight Directory Access Protocol
+
+Processes and Jobs
+- Application = Service
+- Script - Shell scripts or Commands are list of instructions
+- Process - When you run an Application
+- Daemon - is something that keeps running in the background
+- Thread - every process can have one or more threads
+- Jobs - is created by a scheduler to run a service or application
