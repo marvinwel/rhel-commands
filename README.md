@@ -7,7 +7,7 @@
 - [GREP](#GREP)
 - [EGREP](#EGREP)
 - [Sort/Uniq](#Sort/Uniq)
-- [Word Count](#Word Count)
+- [Word Count](#Word-Count)
 
 
 # Access Control List:
