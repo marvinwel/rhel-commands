@@ -1,12 +1,13 @@
 # Table of Contents
-- [Access Control List](#Access-Control-List:)  
+- [Access Control List](#Access-Control-List)  
 - [User Account Management](#User-Account-Management)
 - [Monitor Users](#Monitor-Users)
 - [Cut](#Cut)
 - [AWK](#awk)
 - [GREP](#GREP)
 - [EGREP](#EGREP)
-- [Sort/Uniq](#sort/Uniq)
+- [Sort/Uniq](#Sort/Uniq)
+- [Word Count](#Word Count)
 
 
 # Access Control List:
@@ -90,7 +91,8 @@ grep -n <string name> filename  # Give line number of match
 
 
 <br> <br>
-# EGREP: Find two keywords (case-insensitive):
+# EGREP:
+### Find two keywords (case-insensitive):
 ```
 egrep -i '<string name>|<string name>' filename
 ```
@@ -105,7 +107,7 @@ uniq filename
 
 
 <br> <br>
-# Word Count (wc):
+# Word Count:
 ```
 wc -l filename    # Number of lines
 wc filename       # (lines, words, bytes)
