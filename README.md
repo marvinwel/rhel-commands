@@ -275,16 +275,16 @@ ps -u <username>    #shows all running processes by username
 ```
 <br> <br>
 # top
-- **PID**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; Shows task's unique process id.
-- **USER**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Username of owner of task.
-- **PR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; The "PR" field shows the scheduling priority of the process from the perpective of the kernel.
-- **NI**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Represents a Nice Value of task. A negative nice value implies higher priority, and positve nice value means lower priority.
-- **VIRT**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Total virtual memory used by the task.
-- **RES**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Memory consumed by the process in RAM.
-- **SHR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Represents the amount of shared memory used by a task.
-- **S**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;This field shows the process state in the single-letter form.
-- **%CPU**&nbsp;&nbsp;&nbsp;&nbsp;Represents the CPU usage.
-- **%MEM**&nbsp;&nbsp;&nbsp;&nbsp;Showa the memory usage of task.
+- **PID**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; Shows task's unique process id.
+- **USER**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Username of owner of task.
+- **PR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; The "PR" field shows the scheduling priority of the process from the perpective of the kernel.
+- **NI**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Represents a Nice Value of task. A negative nice value implies higher priority, and positve nice value means lower priority.
+- **VIRT**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Total virtual memory used by the task.
+- **RES**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Memory consumed by the process in RAM.
+- **SHR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Represents the amount of shared memory used by a task.
+- **S**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; This field shows the process state in the single-letter form.
+- **%CPU**&nbsp;&nbsp;&nbsp;&nbsp; Represents the CPU usage.
+- **%MEM**&nbsp;&nbsp;&nbsp;&nbsp;Show the memory usage of task.
 - **TIME+**&nbsp;&nbsp;&nbsp;&nbsp; CPU time, the same as 'Time', but reflecting more granularity through hundredths of a second.
 ```
 top
