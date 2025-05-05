@@ -22,7 +22,14 @@
 - [Top](#top)
 - [Kill](#kill)
 - [Crontab](#Crontab)
-
+- [Process Management](#process-management)
+- [System Info & Monitoring](#System-Monitoring)
+- [Sockets](#Socket)
+- [System Logs](#System-logs)
+- [System Maintenance](#System-Maintenance)
+- [System Hostname](#System-Hostname)
+- [Finding System Information](#Finding-System-Information)
+- [Terminal Control Keys](#Terminal-Control-Keys)
 
 
 
@@ -41,13 +48,17 @@
 - `dnf search <keyword>` – Search for a package  
 - `dnf list installed` – List installed packages  
 
-### 💻 System Info & Monitoring
-- `top` – Real-time process monitoring  
+### 💻 [System Info & Monitoring](#System-Monitoring)
+- [`top`](#Top) – Real-time process monitoring  
 - `htop` – Enhanced process viewer (if installed)  
 - `uptime` – Show how long the system has been running  
 - `free -h` – Display memory usage  
 - `df -h` – Show disk space usage  
-- `du -sh <directory>` – Show size of a directory  
+- `du -sh <directory>` – Show size of a directory
+- [`ss`](#Socket) - Socket Statistic
+- `cat /etc/redhat-release` - Show RHEL version
+- `uname -a` - Full system/kernel info
+- `dmidecode` - Detailed hardware info from BIOS  
 
 ### 📁 File Management
 - `ls -l` – List directory contents in long format  
@@ -79,35 +90,13 @@
 
 <br><br>
 # Access Control List:
-
-### Add permission for a user
 ```
-setfacl -m u:<user name>:rwx /path/to/file
-```
-
-### Add permission for a group
-```
-setfacl -m g:<group name>:rwx /path/to/file
-```
-
-### To allow permissions for all files or directory recursively
-```
-setfacl -Rm "entry" /path/to/dir
-```
-
-### Show ACL Access
-```
-getfacl /path/to/file
-```
-
-### Remove ACL for a user:
-```
-setfacl -x u:user /path/to/file
-```
-
-### Remove all ACL
-```
-setfacl -b /path/to/file
+getfacl /path/to/file                           #Show ACL Access
+setfacl -x u:user /path/to/file                 #Remove ACL for a user
+setfacl -b /path/to/file                        #Remove all ACL
+setfacl -m u:<user name>:rwx /path/to/file      #Add permission for a user
+setfacl -m g:<group name>:rwx /path/to/file     #Add permission for a group
+setfacl -Rm "entry" /path/to/dir                # To allow permissions for all files or directory recursively
 ```
 
 <br> <br>
@@ -274,7 +263,7 @@ ps -ef              #shows all running processes in full format listing
 ps -u <username>    #shows all running processes by username
 ```
 <br> <br>
-# top
+# Top
 - **PID**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; Shows task's unique process id.
 - **USER**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Username of owner of task.
 - **PR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; The "PR" field shows the scheduling priority of the process from the perpective of the kernel.
@@ -318,7 +307,100 @@ systemctl status crond      #to manage the crond service
 <br><br>
 # Process Management
 ```
-Ctrl-z, jobs and bg     #Background
-fg                      #Foreground
-nohup process &         #Run process even after exit
+Ctrl-z, jobs and bg                 #Background
+fg                                  #Foreground
+nohup <process> &                   #Run process in background
+nohup <process> > /dev/null 2>&1 &  #output does not print on screen
+nice -n <number> <process>          #process priority number is between -20 and 19. The lower the number more priority thst task get.
+```
+
+<br><br>
+# System Monitoring
+```
+df                      #shows disk usage
+df -h                   #human readable
+du                      #estimate file space usage
+dmesg                   #print any error messages
+iostat                  #input & output statistic. Monitor system input/output device loading.
+ip route | column -t    #routing information
+free                    #physical memory
+cat                     #output to screen
+```
+<br><br>
+# Socket
+- **Netid**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The type of socket (e.g., tcp, udp, unix, raw, etc.).
+- **State**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The current state of the connection (for TCP: LISTEN, ESTAB (established), TIME_WAIT, etc.; for UDP: usually UNCONN or ESTAB).
+- **Recv-Q**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The receive queue: how many bytes are waiting to be read on the socket. If this is growing, it might mean data isn’t being read fast enough.
+- **Send-Q**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The send queue: how many bytes are waiting to be sent to the remote side. High numbers may indicate network congestion or a stalled connection.
+- **Local Address:Port**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The local IP address (or hostname) and port the socket is bound to.
+- **Peer Address:Port**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The remote IP address (or hostname) and port of the other end of the connection.
+
+#### -t = TCP sockets
+
+#### -u = UDP sockets
+
+#### -l = listening sockets
+
+#### -n = show numeric addresses (no DNS lookups)
+
+```
+ss      #socket statistics
+
+```
+
+<br><br>
+# Sytem Logs
+- /var/log/- path to log files
+```
+boot        #Logs services starting/failing during boot.
+chronyd     #Tracks system time synchronization (NTP).
+cron        #Logs scheduled cron job runs.
+maillog     #Logs email send/receive events.
+secure      #Logs authentication (logins, SSH, sudo).
+messages    #General system and kernel messages.
+httpd       #Apache web server access and error logs.
+```
+
+<br><br>
+# System Maintenance
+```
+shutdown        #Gracefully powers off or restarts the system.
+init 0-6        #Changes system runlevels (0=halt, 6=reboot, etc.)
+        0	Halt (shut down the system)
+        1	Single-user mode (maintenance mode)
+        2	Multi-user mode (no network) (varies)
+        3	Multi-user mode with networking
+        4	Undefined / user-definable
+        5	Multi-user + GUI (graphical mode)
+        6	Reboot
+
+reboot          #Restarts the system (like shutdown -r).
+halt            #Stops all processes and halts the system (no power off).
+```
+
+<br><br>
+# System Hostname
+```
+/etc/hostname
+hostname
+hostnamectl set-hostname <host-name>
+```
+
+<br><br>
+# Finding System Information
+```
+cat /etc/redhat-release         #Shows the Red Hat-based OS version.
+uname -a                        #Displays full system/kernel info.
+dmidecode                       #Shows detailed hardware info (from BIOS/firmware).
+arch                            #architecture type
+``` 
+
+<br><br>
+# Terminal Control Keys
+```
+CRTL-u                  #erase everything typed on the cli
+CRTL-c                  #stop kill a command
+CRTL-s                  #suspend a command
+CRTL-d                  #exit from an interactive program (signal end of data).
+Script <filename>       #create file and record all commands and outputs.
 ```
