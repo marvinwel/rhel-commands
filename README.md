@@ -23,7 +23,7 @@
 - [Kill](#kill)
 - [Crontab](#Crontab)
 - [Process Management](#process-management)
-- [System Info & Monitoring](#System-Monitoring)
+- [System Monitoring](#System-Monitoring)
 - [Sockets](#Socket)
 - [System Logs](#System-logs)
 - [System Maintenance](#System-Maintenance)
@@ -255,7 +255,7 @@ systemctl list-units --all
 ```
 
 <br> <br>
-# process Status (ps):
+# Process Status (ps):
 ```
 ps -e               #shows all running processes
 ps aux              #shows all running processes in BSD format
@@ -403,4 +403,32 @@ CRTL-c                  #stop kill a command
 CRTL-s                  #suspend a command
 CRTL-d                  #exit from an interactive program (signal end of data).
 Script <filename>       #create file and record all commands and outputs.
+```
+
+
+<br><br>
+# Network Utilities
+```
+nmcli - (network manager command line interface) make network configuration changes.
+nmtui - (newtwork maanger text user interface)
+nm-connection-editor
+GNOME settings  allows basic network management tasks to be performed
+```
+
+<br><br>
+# SSH/Telnet
+```
+ssh - secure shell
+    sshd is its service daemon
+telnet - old way to remote to a host unsecure.
+```
+
+
+<br><br>
+# curl/ping
+```
+curl - curl <url>           #checks if a page is up
+    download: curl -O <url> (alternate option for wget)
+
+ping - ping <ip address>    #checks if a host is up and running
 ```
